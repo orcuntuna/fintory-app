@@ -1,11 +1,14 @@
 import { StatusBar } from "expo-status-bar"
-import { Text, View } from "react-native"
+import Navigation from "./src/screens/Navigation"
+import { GestureHandlerRootView } from "react-native-gesture-handler"
 
-export default function App() {
+const App = () => {
   return (
-    <View className={"bg-sky-200 items-center justify-center flex-1"}>
-      <Text className={"font-semibold"}>Open up App.tsx to start working on your app!</Text>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <Navigation />
       <StatusBar style="auto" />
-    </View>
+    </GestureHandlerRootView>
   )
 }
+
+export default App
