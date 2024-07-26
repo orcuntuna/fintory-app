@@ -1,14 +1,8 @@
 import { SafeAreaView, Text, View, StyleSheet, Pressable } from "react-native"
 import { BottomTabBarProps } from "@react-navigation/bottom-tabs/src/types"
 import React from "react"
-import Icon from "@expo/vector-icons/FontAwesome6"
 import * as Haptics from "expo-haptics"
-
-const tabIcons: Record<string, string> = {
-  Overview: "house",
-  History: "hourglass-half",
-  Settings: "gear",
-}
+import BottomTabBarItem from "./BottomTabBarItem"
 
 const BottomTabBar = (props: BottomTabBarProps) => {
   return (
@@ -33,10 +27,14 @@ const BottomTabBar = (props: BottomTabBarProps) => {
           }
 
           return (
-            <Pressable onPress={onPressTab} key={route.key} style={[styles.tabItem, isFocused && styles.tabItemActive]}>
-              <Icon name={tabIcons[route.name]} size={18} color={isFocused ? "#fff" : "#666"} />
-              {isFocused && <Text style={styles.tabItemText}>{options.title}</Text>}
-            </Pressable>
+            <BottomTabBarItem
+              key={route.key}
+              onPress={onPressTab}
+              routeKey={route.key}
+              routeName={route.name}
+              title={options.title}
+              isFocused={isFocused}
+            />
           )
         })}
       </SafeAreaView>
@@ -64,24 +62,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     gap: 8,
-  },
-  tabItem: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    gap: 8,
-    paddingVertical: 10,
-    paddingHorizontal: 16,
-    borderRadius: 100,
-  },
-  tabItemText: {
-    fontSize: 16,
-    color: "#fff",
-    fontWeight: "600",
-  },
-  tabItemActive: {
-    paddingHorizontal: 20,
-    backgroundColor: "blue",
   },
 })
 
