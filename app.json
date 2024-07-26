@@ -23,6 +23,18 @@
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "plugins": []
+    "plugins": [
+      [
+        "expo-font",
+        {
+          "fonts": [
+            "assets/fonts/inter/Inter-Regular.ttf",
+            "assets/fonts/inter/Inter-Medium.ttf",
+            "assets/fonts/inter/Inter-SemiBold.ttf",
+            "assets/fonts/inter/Inter-Bold.ttf"
+          ]
+        }
+      ]
+    ]
   }
 }

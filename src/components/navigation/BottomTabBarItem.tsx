@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
   tabItemText: {
     fontSize: 16,
     color: "#fff",
-    fontWeight: "600",
+    fontFamily: "Inter-SemiBold",
   },
   tabItemActive: {
     paddingHorizontal: 20,
