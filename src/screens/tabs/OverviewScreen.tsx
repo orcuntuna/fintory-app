@@ -1,13 +1,21 @@
-import React from "react"
-import { View, Text } from "react-native"
-import { TwText } from "../../components/common/Tailwind"
+import React, { useState } from "react"
+import { TwView } from "../../components/common/Tailwind"
+import Tabs from "../../components/common/tabs/Tabs"
+
+const tabItems = [
+  { key: "all", text: "Tümü" },
+  { key: "currency", text: "Döviz" },
+  { key: "stock", text: "Borsa" },
+  { key: "crypto", text: "Kripto" },
+]
 
 const OverviewScreen = () => {
+  const [selectedTabKey, setSelectedTabKey] = useState(tabItems[0].key)
+
   return (
-    <View>
-      <Text style={{ fontSize: 30, fontFamily: "Inter-Regular" }}>Overview screen!</Text>
-      <TwText className={"text-[30px]"}>Overview screen!</TwText>
-    </View>
+    <TwView className={"flex-1 relative"}>
+      <Tabs items={tabItems} selectedKey={selectedTabKey} onChangeSelectedKey={setSelectedTabKey} />
+    </TwView>
   )
 }
 
