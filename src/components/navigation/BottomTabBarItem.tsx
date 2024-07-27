@@ -13,6 +13,8 @@ type BottomTabBarItemProps = {
 
 const tabIcons: Record<string, string> = {
   Overview: "house",
+  Portfolio: "briefcase",
+  CurrentRate: "coins",
   History: "hourglass-half",
   Settings: "gear",
 }

@@ -6,6 +6,8 @@ import OverviewScreen from "./tabs/OverviewScreen"
 import BottomTabBar from "../components/navigation/BottomTabBar"
 import HistoryScreen from "./tabs/HistoryScreen"
 import SettingsScreen from "./tabs/SettingsScreen"
+import PortfolioScreen from "./tabs/PortfolioScreen"
+import CurrentRateScreen from "./tabs/CurrentRateScreen"
 
 const Stack = createNativeStackNavigator()
 const Tab = createBottomTabNavigator()
@@ -13,9 +15,11 @@ const Tab = createBottomTabNavigator()
 const Tabs = () => {
   return (
     <Tab.Navigator tabBar={BottomTabBar}>
-      <Tab.Screen name={"Overview"} options={{ title: "Overview" }} component={OverviewScreen} />
-      <Tab.Screen name={"History"} options={{ title: "History" }} component={HistoryScreen} />
-      <Tab.Screen name={"Settings"} options={{ title: "Settings" }} component={SettingsScreen} />
+      <Tab.Screen name={"Overview"} options={{ title: "Genel Bakış" }} component={OverviewScreen} />
+      <Tab.Screen name={"Portfolio"} options={{ title: "Portfolyo" }} component={PortfolioScreen} />
+      <Tab.Screen name={"CurrentRate"} options={{ title: "Kurlar" }} component={CurrentRateScreen} />
+      <Tab.Screen name={"History"} options={{ title: "Geçmiş" }} component={HistoryScreen} />
+      <Tab.Screen name={"Settings"} options={{ title: "Ayarlar" }} component={SettingsScreen} />
     </Tab.Navigator>
   )
 }

@@ -1,6 +1,5 @@
-import { TwPressable, TwScrollView, TwView } from "../Tailwind"
+import { TwPressable, TwView } from "../Tailwind"
 import TabItem from "./TabItem"
-import { Pressable, StyleSheet } from "react-native"
 import { startTransition } from "react"
 
 type TabsPros = {
@@ -17,29 +16,22 @@ const Tabs = (props: TabsPros) => {
   }
 
   return (
-    <TwView className={"w-full flex-row px-4 py-3"}>
-      <TwView className={"flex-1 flex-row border border-[#eee] bg-white rounded-full"}>
-        {props.items.map((item) => (
+    <TwView className={"w-full flex-row px-3 py-3"}>
+      <TwView className={"flex-1 flex-row border border-gray-200 bg-white rounded-md"}>
+        {props.items.map((item, index) => (
           <TwPressable key={item.key} onPress={() => onPressTab(item.key)} className={"flex-1"}>
-            <TabItem itemKey={item.key} text={item.text} isFocused={item.key === props.selectedKey} />
+            <TabItem
+              itemKey={item.key}
+              text={item.text}
+              isFocused={item.key === props.selectedKey}
+              isFirstItem={index === 0}
+              isLastItem={index === props.items.length - 1}
+            />
           </TwPressable>
         ))}
       </TwView>
     </TwView>
   )
 }
-
-const styles = StyleSheet.create({
-  scrollView: {
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.18,
-    shadowRadius: 1.0,
-    elevation: 1,
-  },
-})
 
 export default Tabs
