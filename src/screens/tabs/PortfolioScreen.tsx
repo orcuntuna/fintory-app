@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { CategoryKeys } from "../../types/categories"
+import { CategoryKeys } from "../../utils/types/categories"
 import { TwText, TwView } from "../../components/common/Tailwind"
 import Tabs from "../../components/common/tabs/Tabs"
 import Table from "../../components/table/Table"

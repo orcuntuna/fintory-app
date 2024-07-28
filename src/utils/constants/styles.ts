@@ -1,6 +1,9 @@
 import { StyleSheet } from "react-native"
 
 export const sharedStyles = StyleSheet.create({
+  flex1: {
+    flex: 1,
+  },
   shadow: {
     shadowColor: "#000",
     shadowOffset: {
