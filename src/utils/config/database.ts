@@ -13,4 +13,5 @@ export const db = Knex({
 export const tableNames = {
   AppConfig: "app_config",
   UserConfig: "user_config",
+  PortfolioItems: "portfolio_items",
 }

@@ -1,5 +1,5 @@
-import { Fragment, ReactNode } from "react"
-import { TwPressable, TwText, TwView } from "../common/Tailwind"
+import { ReactNode } from "react"
+import { TwText, TwTouchableOpacity, TwView } from "../common/Tailwind"
 import clsx from "clsx"
 
 type TableProps = {
@@ -25,7 +25,8 @@ const Table = (props: TableProps) => {
         </TwView>
         <TwView>
           {props.rows.map((row, rowIndex) => (
-            <TwPressable
+            <TwTouchableOpacity
+              activeOpacity={0.5}
               disabled={!props.isPressable}
               onPress={() => props.onPressRow && props.onPressRow(row)}
               key={row.key}
@@ -40,7 +41,7 @@ const Table = (props: TableProps) => {
                   {item}
                 </TwView>
               ))}
-            </TwPressable>
+            </TwTouchableOpacity>
           ))}
         </TwView>
         {props.footer && (

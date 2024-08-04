@@ -3,7 +3,9 @@ import { CategoryKeys } from "../../utils/types/categories"
 import { TwText, TwView } from "../../components/common/Tailwind"
 import Tabs from "../../components/common/tabs/Tabs"
 import Table from "../../components/table/Table"
-import { Alert } from "react-native"
+import ActionButton from "../../components/common/ActionButton"
+import { useNavigation } from "@react-navigation/native"
+import HeaderNavBar from "../../components/navigation/HeaderNavBar"
 
 const tabItems = [
   { key: "all", text: "Tümü" },
@@ -53,12 +55,15 @@ const tableRows = [
 ]
 
 const PortfolioScreen = () => {
+  const navigation = useNavigation()
   const [selectedTabKey, setSelectedTabKey] = useState(tabItems[0].key)
 
   return (
     <TwView className={"flex-1 relative"}>
+      <HeaderNavBar title={"Portfolyo"} hideBorder={true} />
       <Tabs items={tabItems} selectedKey={selectedTabKey} onChangeSelectedKey={setSelectedTabKey} />
       <Table header={tableHeaders} footer={tableFooters} colSizes={[5, 2, 2]} rows={tableRows} isStripped={true} />
+      <ActionButton icon={"plus"} onPress={() => navigation.navigate("AddPortfolioItem" as never)} />
     </TwView>
   )
 }

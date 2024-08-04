@@ -1,6 +1,7 @@
 import { TwPressable, TwView } from "../Tailwind"
 import TabItem from "./TabItem"
 import { startTransition } from "react"
+import * as Haptics from "expo-haptics"
 
 type TabsPros = {
   items: { key: string; text: string }[]
@@ -11,13 +12,14 @@ type TabsPros = {
 const Tabs = (props: TabsPros) => {
   const onPressTab = (key: string) => {
     startTransition(() => {
+      Haptics.selectionAsync().then()
       props.onChangeSelectedKey(key)
     })
   }
 
   return (
-    <TwView className={"w-full flex-row px-3 py-3"}>
-      <TwView className={"flex-1 flex-row border border-gray-200 bg-white rounded-md"}>
+    <TwView className={"w-full flex-row mb-4 border-b border-b-gray-200"}>
+      <TwView className={"flex-1 flex-row bg-white"}>
         {props.items.map((item, index) => (
           <TwPressable key={item.key} onPress={() => onPressTab(item.key)} className={"flex-1"}>
             <TabItem

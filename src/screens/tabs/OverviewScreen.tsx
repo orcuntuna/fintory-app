@@ -1,11 +1,11 @@
 import React from "react"
 import { TwText, TwView } from "../../components/common/Tailwind"
-import { Alert, Button } from "react-native"
-import { db } from "../../utils/config/database"
+import HeaderNavBar from "../../components/navigation/HeaderNavBar"
 
 const OverviewScreen = () => {
   return (
     <TwView className={"flex-1 relative"}>
+      <HeaderNavBar title={"Genel Bakış"} />
       <TwText>Overview</TwText>
     </TwView>
   )

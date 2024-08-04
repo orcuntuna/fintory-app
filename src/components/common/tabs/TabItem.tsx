@@ -12,14 +12,11 @@ type TabItemProps = {
 const TabItem = (props: TabItemProps) => {
   return (
     <TwView
-      className={clsx("flex-row items-center justify-center py-3.5", {
-        "bg-sky-600": props.isFocused,
-        "border-r border-gray-200": !props.isLastItem,
-        "rounded-l-md": props.isFirstItem,
-        "rounded-r-md": props.isLastItem,
+      className={clsx("flex-row items-center justify-center pt-2.5 pb-4 border-b-[3px] border-b-transparent", {
+        "border-b-sky-600": props.isFocused,
       })}
     >
-      <TwText className={clsx("font-inter-500 text-[15px] text-gray-900", { "font-inter-600 text-white": props.isFocused })}>
+      <TwText className={clsx("font-inter-500 text-[16px] text-black", { "font-inter-600 text-sky-600": props.isFocused })}>
         {props.text}
       </TwText>
     </TwView>
