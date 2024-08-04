@@ -1,15 +1,16 @@
 import { db, tableNames } from "../config/database"
 import { migrations as allMigrations } from "../config/migrations"
 import { Migrations } from "../types/migration"
+import { AppConfigService } from "../../services/AppConfigService"
 
 export const applyMigrations = async () => {
   let migrationList: Migrations
 
-  const hasAppConfigTable = await db.schema.hasTable(tableNames.AppConfig)
+  const hasAppConfigTable = await AppConfigService.hasTable()
   if (!hasAppConfigTable) {
     migrationList = allMigrations
   } else {
-    const lastUsedMigration = await db(tableNames.AppConfig).where("key", "last_migration").first()
+    const lastUsedMigration = await AppConfigService.getConfig("last_migration")
     if (!lastUsedMigration) {
       migrationList = allMigrations
     } else {
@@ -25,7 +26,7 @@ export const applyMigrations = async () => {
       lastAppliedMigrationId = migration.id
     }
 
-    await db(tableNames.AppConfig).where("key", "last_migration").update({ value: lastAppliedMigrationId })
+    await AppConfigService.setConfig("last_migration", String(lastAppliedMigrationId))
   }
 }
 
