@@ -1,6 +1,5 @@
-import React, { useState } from "react"
+import React from "react"
 import { TabView, SceneMap } from "react-native-tab-view"
-import { CategoryKeys } from "../../utils/types/categories"
 import { TwText, TwView } from "../../components/common/Tailwind"
 import Table from "../../components/table/Table"
 import ActionButton from "../../components/common/ActionButton"
@@ -8,14 +7,6 @@ import { useNavigation } from "@react-navigation/native"
 import HeaderNavBar from "../../components/navigation/HeaderNavBar"
 import { useWindowDimensions } from "react-native"
 import CustomTabBar from "../../components/common/CustomTabBar"
-
-const tabItems = [
-  { key: "all", text: "Tümü" },
-  { key: CategoryKeys.Currency, text: "Döviz" },
-  { key: CategoryKeys.Gold, text: "Altın" },
-  { key: CategoryKeys.Stock, text: "Borsa" },
-  { key: CategoryKeys.Crypto, text: "Kripto" },
-]
 
 const tableHeaders = [
   "Varlık",
