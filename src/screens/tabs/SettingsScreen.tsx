@@ -5,7 +5,7 @@ import HeaderNavBar from "../../components/navigation/HeaderNavBar"
 const SettingsScreen = () => {
   return (
     <View>
-      <HeaderNavBar title={"Çıkış Yap"} />
+      <HeaderNavBar title={"Ayarlar"} />
       <Text>Settings screen!</Text>
     </View>
   )

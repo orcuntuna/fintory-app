@@ -34,4 +34,5 @@ export const sharedStyles = StyleSheet.create({
     top: 16,
     right: 14,
   },
+  tabBarIndicator: {},
 })

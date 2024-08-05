@@ -20,7 +20,7 @@ const tabIcons: Record<string, string> = {
 }
 
 const BottomTabBarItem = (props: BottomTabBarItemProps) => {
-  const scale = useSharedValue(0.75)
+  const scale = useSharedValue(0.8)
   const opacity = useSharedValue(0.5)
 
   const focusedItemAnimatedStyle = useAnimatedStyle(() => {
@@ -40,7 +40,7 @@ const BottomTabBarItem = (props: BottomTabBarItemProps) => {
       })
     } else {
       opacity.value = 0.5
-      scale.value = 0.75
+      scale.value = 0.8
     }
   }, [props.isFocused])
 

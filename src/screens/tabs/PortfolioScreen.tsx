@@ -1,11 +1,13 @@
 import React, { useState } from "react"
+import { TabView, SceneMap } from "react-native-tab-view"
 import { CategoryKeys } from "../../utils/types/categories"
 import { TwText, TwView } from "../../components/common/Tailwind"
-import Tabs from "../../components/common/tabs/Tabs"
 import Table from "../../components/table/Table"
 import ActionButton from "../../components/common/ActionButton"
 import { useNavigation } from "@react-navigation/native"
 import HeaderNavBar from "../../components/navigation/HeaderNavBar"
+import { useWindowDimensions } from "react-native"
+import CustomTabBar from "../../components/common/CustomTabBar"
 
 const tabItems = [
   { key: "all", text: "Tümü" },
@@ -54,15 +56,63 @@ const tableRows = [
   },
 ]
 
+const AllRoute = () => (
+  <TwView className={"mt-3"}>
+    <Table header={tableHeaders} footer={tableFooters} colSizes={[5, 2, 2]} rows={tableRows} isStripped={true} />
+  </TwView>
+)
+const CurrencyRoute = () => (
+  <TwView>
+    <TwText>Döviz</TwText>
+  </TwView>
+)
+const GoldRoute = () => (
+  <TwView>
+    <TwText>Altın</TwText>
+  </TwView>
+)
+const StockRoute = () => (
+  <TwView>
+    <TwText>Borsa</TwText>
+  </TwView>
+)
+const CryptoRoute = () => (
+  <TwView>
+    <TwText>Kripto</TwText>
+  </TwView>
+)
+
+const renderScene = SceneMap({
+  all: AllRoute,
+  currency: CurrencyRoute,
+  gold: GoldRoute,
+  stock: StockRoute,
+  crypto: CryptoRoute,
+})
+
 const PortfolioScreen = () => {
   const navigation = useNavigation()
-  const [selectedTabKey, setSelectedTabKey] = useState(tabItems[0].key)
+  const layout = useWindowDimensions()
+
+  const [index, setIndex] = React.useState(0)
+  const [routes] = React.useState([
+    { key: "all", title: "Tümü" },
+    { key: "currency", title: "Döviz" },
+    { key: "gold", title: "Altın" },
+    { key: "stock", title: "Borsa" },
+    { key: "crypto", title: "Kripto" },
+  ])
 
   return (
     <TwView className={"flex-1 relative"}>
       <HeaderNavBar title={"Portfolyo"} hideBorder={true} />
-      <Tabs items={tabItems} selectedKey={selectedTabKey} onChangeSelectedKey={setSelectedTabKey} />
-      <Table header={tableHeaders} footer={tableFooters} colSizes={[5, 2, 2]} rows={tableRows} isStripped={true} />
+      <TabView
+        navigationState={{ index, routes }}
+        renderScene={renderScene}
+        onIndexChange={setIndex}
+        initialLayout={{ width: layout.width }}
+        renderTabBar={CustomTabBar}
+      />
       <ActionButton icon={"plus"} onPress={() => navigation.navigate("AddPortfolioItem" as never)} />
     </TwView>
   )
